@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [query, setQuery] = useState({ q: "pune" });
+  const [query, setQuery] = useState({ q: "Pune" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
@@ -22,7 +22,7 @@ function App() {
 
       await getFormattedWeatherData({ ...query, units }).then((data) => {
         toast.success(
-          `Successfully fetched weather for ${data.name}, ${data.country}.`
+          `Showing weather for ${data.name}, ${data.country}.`
         );
 
         setWeather(data);
@@ -33,6 +33,7 @@ function App() {
   }, [query, units]);
 
   const formatBackground = () => {
+    
     if (!weather) return "from-cyan-700 to-blue-700";
     const threshold = units === "metric" ? 20 : 60;
     if (weather.temp <= threshold) return "from-cyan-700 to-blue-700";
